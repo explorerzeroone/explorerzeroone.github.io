@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: rgb(255, 247, 201);
+  padding: 0;
+}
+.halfboat {
+  max-width: 300px;
+  height: auto;
+}
