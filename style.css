@@ -33,15 +33,3 @@ img {
   color: beige;
   text-decoration: none;
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  background-color: rgb(255, 247, 201);
-  padding: 50px;
-}
-img {
-  padding: 20px;
-}
