@@ -5,9 +5,8 @@
 }
 body {
   background-color: rgb(255, 247, 201);
-  padding: 0;
+  padding: 50px;
 }
-.halfboat {
-  max-width: 300px;
-  height: auto;
+img {
+  padding: 20px;
 }
