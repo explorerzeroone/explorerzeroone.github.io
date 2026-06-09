@@ -1,0 +1,30 @@
+img {
+  align-items: center center center;
+}
+body {
+  background-color: rgb(255, 247, 201);
+}
+.content {
+  padding: 50px;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: chocolate;
+  color: black;
+  padding: 25px;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+.nav-links a:hover {
+  color: beige;
+  text-decoration: none;
+}
