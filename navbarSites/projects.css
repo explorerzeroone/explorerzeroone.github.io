@@ -1,0 +1,18 @@
+body {
+  height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 247, 201);
+  gap: 40px;
+}
+.button {
+  position: relative;
+  padding: 10px 25px;
+  background-color: blueviolet;
+  border-radius: 6px;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  font-weight: 400;
+}

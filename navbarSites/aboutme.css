@@ -2,15 +2,17 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-body {
-  background-color: rgb(255, 247, 201);
+  background-image: url("images/me.jpg");
 }
 img {
-  padding: 20px;
+  padding: 30px;
+  align-items: center center center;
 }
 .content {
   padding: 50px;
+}
+body {
+  background-color: rgb(255, 247, 201);
 }
 .navbar {
   display: flex;

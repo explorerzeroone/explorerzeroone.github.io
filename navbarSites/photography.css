@@ -1,13 +1,8 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+img {
+  align-items: center center center;
 }
 body {
   background-color: rgb(255, 247, 201);
-}
-img {
-  padding: 20px;
 }
 .content {
   padding: 50px;
