@@ -5,36 +5,56 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="style.css" rel="Stylesheet" />
+    <link
+      rel="Stylesheet"
+      href="https://googleapis.com
++Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
   </head>
   <body>
-    <nav class="navbar">
-      <div class="logo">Stillroaming.mynk</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="navbarSites/projects.html">Projects</a></li>
-        <li><a href="navbarSites/aboutme.html">About</a></li>
-        <li><a href="navbarSites/photography.html">Photography</a></li>
-      </ul>
-    </nav>
-    <main class="content">
-      <h1>Hello World!</h1>
-      <br />
-      <h4>My name is Mayank Biswas, Welcome to my website!</h4>
-      <p>
-        I am a computer science engineering student, learning my first
-        programming languages in the web development niche. This is a website
-        created using basic html and css that I have learnt. The website is
-        essentially like a showcase of my learnt skills over time.
-      </p>
-      <br />
-      <p>
-        I also have some hobbies that I indulge in every now and then, for
-        example, photography.
-      </p>
-      <img src="images/bird.jpg" width="350" />
-      <img src="images/mirrorworld.jpg" width="350" />
-      <img src="images/chess.jpg" width="350" />
-      <img src="images/staircase.jpg" width="350" />
-    </main>
+    <header>
+      <nav class="navbar">
+        <a href="#" class="logo">Stillroaming.mynk<span>.</span></a>
+        <ul class="menu-links">
+          <span id="close-menu-btn" class="material-symbols-outlined">✖</span>
+          <li><a href="/navbarSites/aboutme.html">About</a></li>
+          <li>
+            <a href="/navbarSites/photography.html">Photography</a>
+          </li>
+          <li>
+            <a href="/navbarSites/projects.html">Projects</a>
+          </li>
+          <li><a href="#">Learn More</a></li>
+          <li><a href="#">Connect</a></li>
+        </ul>
+        <span id="menu-btn" class="material-symbols-outlined">☰</span>
+      </nav>
+    </header>
+
+    <section class="hero-section">
+      <div class="content">
+        <h1>Hello world!</h1>
+        <h4>My name is Mayank Biswas, Welcome to my website!</h4>
+        <p>
+          I am a computer science engineering student, learning my first
+          programming languages in the web development niche. This is a website
+          created using basic html and css that I have learnt. The website is
+          essentially like a showcase of my learnt skills over time.
+        </p>
+      </div>
+    </section>
+    <script>
+      const header = document.querySelector("header");
+      const menuBtn = document.querySelector("#menu-btn");
+      const closeMenuBtn = document.querySelector("#close-menu-btn");
+
+      menuBtn.addEventListener("click", () => {
+        header.classList.toggle("show-mobile-menu");
+      });
+
+      closeMenuBtn.addEventListener("click", () => {
+        menuBtn.click();
+      });
+    </script>
   </body>
 </html>
