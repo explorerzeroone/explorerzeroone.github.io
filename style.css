@@ -1,138 +1,298 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* =========================================================
+   STYLE.CSS — every color, font and spacing choice lives here.
+   Sections are labelled in ALL CAPS — search (Ctrl/Cmd+F) for
+   the section name to jump straight there.
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   1. VARIABLES
+   --------------------------------------------------------- */
+:root {
+  --color-ink:      #14100c;  /* near-black, matches your about page */
+  --color-espresso: #40312a;
+  --color-clay:     #c9855a;
+  --color-sand:     #e7d9c3;
+  --color-white:    #fffdf8;
+  --color-muted:    #cfc4b3;  /* dimmer white, for paragraph text on the photo */
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  --space-section: clamp(4rem, 8vw, 7rem);
+  --max-width: 1200px;
 }
+
+
+/* ---------------------------------------------------------
+   2. RESET — you don't need to edit this section.
+   --------------------------------------------------------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 body {
-  height: 100vh;
-  background: url("images/HERO.jpg");
-  background-position: center;
-  background-size: cover;
+  font-family: var(--font-body);
+  background: var(--color-ink);
+  color: var(--color-sand);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; }
+
+
+/* ---------------------------------------------------------
+   3. SHARED STYLES
+   --------------------------------------------------------- */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-clay);
+  margin-bottom: 0.75rem;
+}
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--color-white);
 }
 
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
+
+/* ---------------------------------------------------------
+   4. HERO — the full-screen photo section
+   --------------------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 100svh; /* fills the screen, but respects mobile browser bars */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* The photo itself, filling the whole hero and cropping to cover it */
+.hero__photo {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  padding: 20px;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%; /* keeps the top of the photo (trees/sky) in frame */
 }
 
-#logo {
-  color: wheat;
+/* If the photo file is missing, show a forest-toned gradient instead of a
+   broken image icon, so the page still looks intentional. script.js adds
+   this class automatically if images/hero.jpg can't be found. */
+.hero__photo--missing {
+  background: linear-gradient(160deg, #2b241b, #14100c 70%);
 }
 
-header .navbar {
+/* The dark gradient over the photo — this is the main readability fix.
+   It's darkest at the bottom-left (where the text sits) and fades out
+   toward the top-right, so the photo still shows through up there. */
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(20,16,12,0.85) 0%, rgba(20,16,12,0.45) 45%, rgba(20,16,12,0.15) 75%),
+    linear-gradient(0deg, rgba(20,16,12,0.75) 0%, rgba(20,16,12,0.1) 45%, rgba(20,16,12,0.35) 100%);
+}
+
+
+/* ---------------------------------------------------------
+   5. NAVIGATION — sits on top of the photo.
+      This matches the same nav pattern used on your About
+      and Photography pages: sticky, blurred dark bar,
+      small uppercase mono links.
+   --------------------------------------------------------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(20, 16, 12, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(231, 217, 195, 0.12);
+}
+.nav__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
   display: flex;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
   justify-content: space-between;
 }
-
-.navbar .logo {
-  font-size: 2.1rem;
-  font-weight: 600;
+.nav__brand {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--color-white);
 }
+.nav__brand span { color: var(--color-clay); }
 
-.navbar .logo span {
-  color: #c06b3e;
-}
-
-.navbar .menu-links {
+.nav__links {
   display: flex;
-  gap: 40px;
-  color: #fff;
-  list-style-type: none;
-}
-
-.navbar a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.hero-section {
-  height: 100vh;
-  display: flex;
+  gap: 2rem;
   align-items: center;
-  padding: 0 20px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.nav__links a { opacity: 0.8; transition: opacity 0.2s; color: var(--color-sand); }
+.nav__links a:hover { opacity: 1; color: var(--color-clay); }
+
+.nav__toggle { display: none; flex-direction: column; gap: 5px; width: 26px; }
+.nav__toggle span { height: 2px; background: var(--color-sand); border-radius: 2px; }
+
+
+/* ---------------------------------------------------------
+   6. HERO CONTENT — the "Hello world!" text block
+   --------------------------------------------------------- */
+.hero__content {
+  position: relative;
+  z-index: 5;
+  max-width: var(--max-width);
+  width: 100%;
+  margin: auto 0 0;
+  padding: 0 2.5rem 6rem;
+}
+.hero__title {
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  margin-bottom: 1.25rem;
+}
+.hero__intro {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  color: var(--color-white);
+  margin-bottom: 0.9rem;
+}
+.hero__body {
+  max-width: 52ch;
+  color: var(--color-muted);
+  font-size: 1rem;
 }
 
-.hero-section .content {
-  color: #fff;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.hero-section .content h1 {
-  color: #fff;
-  font-size: 3rem;
-  max-width: 600px;
-}
-
-.hero-section .content h4 {
-  color: #fff;
-  margin-top: 15px;
-  max-width: 600px;
-}
-
-.hero-section .content p {
-  color: #fff;
-  font-weight: 300;
-  margin-top: 15px;
-  max-width: 600px;
-}
-
-#menu-btn {
-  display: none;
-  color: #fff;
-  cursor: pointer;
-}
-
-#close-menu-btn {
-  display: none;
+/* Small bouncing arrow hinting there's more content below */
+.hero__scroll-cue {
   position: absolute;
-  right: 20px;
-  top: 20px;
-  cursor: pointer;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  color: var(--color-white);
+  font-size: 1.3rem;
+  opacity: 0.7;
+  animation: bounce 2.2s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 8px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__scroll-cue { animation: none; }
 }
 
-@media screen and (max-width: 900px) {
-  #close-menu-btn,
-  #menu-btn {
-    display: block;
-  }
 
-  #close-menu-btn {
-    display: block;
-  }
+/* ---------------------------------------------------------
+   7. PILLARS SECTION ("Learn More" destination)
+   --------------------------------------------------------- */
+.pillars {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-section) 2.5rem;
+}
+.pillars__heading {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  max-width: 20ch;
+  margin-bottom: 3rem;
+}
+.pillars__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.pillar {
+  display: block;
+  padding: 2rem;
+  border: 1px solid var(--color-espresso);
+  border-radius: 3px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.pillar:hover {
+  border-color: var(--color-clay);
+  transform: translateY(-4px);
+}
+.pillar__label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-clay);
+}
+.pillar h3 { font-size: 1.3rem; margin: 0.75rem 0 0.5rem; }
+.pillar p { color: var(--color-muted); font-size: 0.9rem; }
 
-  header.show-mobile-menu #menu-btn {
+
+/* ---------------------------------------------------------
+   8. FOOTER / CONNECT
+   --------------------------------------------------------- */
+.footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2.5rem var(--space-section);
+}
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--color-espresso);
+}
+.footer__email {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--color-clay);
+}
+.footer__links {
+  display: flex;
+  gap: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.footer__note {
+  margin-top: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  opacity: 0.7;
+}
+
+
+/* ---------------------------------------------------------
+   9. RESPONSIVE
+   --------------------------------------------------------- */
+@media (max-width: 900px) {
+  .pillars__grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .nav__toggle { display: flex; }
+  .nav__links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(20, 16, 12, 0.97);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid rgba(231, 217, 195, 0.12);
     display: none;
   }
-  .navbar .menu-links {
-    position: fixed;
-    left: -260px;
-    top: 0;
-    flex-direction: column;
-    width: 260px;
-    height: 100vh;
-    background-color: #fff;
-    padding: 70px 40px 0;
-    transition: left 0.15s ease;
-  }
-
-  header.show-mobile-menu .navbar .menu-links {
-    left: 0;
-  }
-
-  .navbar a {
-    color: black;
-  }
-  .navbar .logo {
-    color: antiquewhite;
-  }
-  .navbar .material-symbols-outlined {
-    color: black;
-  }
+  .nav__links.is-open { display: flex; }
+  .hero__content { padding-bottom: 4rem; }
+  .footer__inner { flex-direction: column; align-items: flex-start; }
 }
