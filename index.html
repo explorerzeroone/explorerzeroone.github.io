@@ -1,59 +1,140 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Portfolio Site</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="style.css" rel="Stylesheet" />
+    <title>Stillroaming — Mayank Biswas</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="Stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
     />
+
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <nav class="navbar">
-        <a href="#" class="logo">Stillroaming.mynk<span>.</span></a>
-        <ul class="menu-links">
-          <span id="close-menu-btn" class="material-symbols-outlined">✖</span>
-          <li><a href="/navbarSites/aboutme.html">About</a></li>
-          <li>
-            <a href="/navbarSites/photography.html">Photography</a>
-          </li>
-          <li>
-            <a href="/navbarSites/projects.html">Projects</a>
-          </li>
-          <li><a href="#">Learn More</a></li>
-          <li><a href="#">Connect</a></li>
-        </ul>
-        <span id="menu-btn" class="material-symbols-outlined">☰</span>
-      </nav>
-    </header>
+    <!-- =====================================================
+       HERO — full-bleed photo, wordmark, nav, headline.
+       This is the section your screenshot shows. The layout
+       and content are kept the same on purpose — only the
+       contrast, spacing and code underneath are improved.
+       ===================================================== -->
+    <section class="hero" id="top">
+      <!-- The background photo. EDIT ME: put your own forest photo at
+         images/hero.jpg (or change the file name below to match yours). -->
+      <img
+        src="images/hero.jpg"
+        alt="Mayank standing in a forest, looking up"
+        class="hero__photo"
+        id="heroPhoto"
+      />
 
-    <section class="hero-section">
-      <div class="content">
-        <h1>Hello world!</h1>
-        <h4>My name is Mayank Biswas, Welcome to my website!</h4>
-        <p>
-          I am a computer science engineering student, learning my first
-          programming languages in the web development niche. This is a website
-          created using basic html and css that I have learnt. The website is
-          essentially like a showcase of my learnt skills over time.
+      <!-- A dark gradient sits on top of the photo (in style.css) so the
+         text stays readable no matter what's happening in the photo
+         behind it — this fixes the text/arm overlap issue from before. -->
+      <div class="hero__scrim" aria-hidden="true"></div>
+
+      <!-- Top navigation bar -->
+      <header class="nav">
+        <div class="nav__inner">
+          <a href="#top" class="nav__brand">Stillroaming<span>.</span>mynk</a>
+
+          <button
+            class="nav__toggle"
+            id="navToggle"
+            aria-label="Open menu"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span>
+          </button>
+
+          <nav class="nav__links" id="navLinks">
+            <!-- EDIT ME: these three go to your other sites -->
+            <a href="/navbarSites/aboutme.html">About</a>
+            <a href="/navbarSites/photography.html">Photography</a>
+            <a href="/navbarSites/projects.html">Projects</a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- The hero text block -->
+      <div class="hero__content">
+        <!-- EDIT ME: your headline -->
+        <h1 class="hero__title">Hello world!</h1>
+        <!-- EDIT ME: your intro line -->
+        <p class="hero__intro">
+          My name is Mayank Biswas. Welcome to my website!
+        </p>
+        <!-- EDIT ME: your short paragraph -->
+        <p class="hero__body">
+          I'm a first year computer science engineering student at HIT, haldia,
+          learning web development one project at a time. This site is a running
+          showcase of what I'm building and learning — photography, code, and
+          everything in between.
         </p>
       </div>
+
+      <!-- A small scroll cue at the bottom of the hero, hinting there's more below -->
+      <a href="#learn-more" class="hero__scroll-cue" aria-label="Scroll down"
+        >↓</a
+      >
     </section>
-    <script>
-      const header = document.querySelector("header");
-      const menuBtn = document.querySelector("#menu-btn");
-      const closeMenuBtn = document.querySelector("#close-menu-btn");
 
-      menuBtn.addEventListener("click", () => {
-        header.classList.toggle("show-mobile-menu");
-      });
+    <!-- =====================================================
+       LEARN MORE — a short set of links to the three pillars
+       of the site. This is new; it gives the "Learn More" nav
+       link somewhere real to land, instead of going nowhere.
+       ===================================================== -->
+    <section class="pillars" id="learn-more">
+      <p class="eyebrow">Learn more</p>
+      <h2 class="pillars__heading">Everything lives in three places.</h2>
 
-      closeMenuBtn.addEventListener("click", () => {
-        menuBtn.click();
-      });
-    </script>
+      <div class="pillars__grid">
+        <!-- EDIT ME: each card's description, freely -->
+        <a href="/navbarSites/aboutme.html" class="pillar">
+          <span class="pillar__label">01</span>
+          <h3>About</h3>
+          <p>Who I am, what I value, and where I'm headed.</p>
+        </a>
+        <a href="navbarSites/photography.html" class="pillar">
+          <span class="pillar__label">02</span>
+          <h3>Photography</h3>
+          <p>Shots from a Motorola G84 — streets, skies, quiet moments.</p>
+        </a>
+        <a href="navbarSites/projects.html" class="pillar">
+          <span class="pillar__label">03</span>
+          <h3>Projects</h3>
+          <p>What I've built so far, and what I'm building next.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- =====================================================
+       CONNECT — a simple footer/contact section
+       ===================================================== -->
+    <footer class="footer" id="connect">
+      <div class="footer__inner">
+        <div>
+          <p class="eyebrow">Get in touch</p>
+          <!-- EDIT ME: your real email -->
+          <a href="mailto:mayankbiswas427@gmail.com" class="footer__email"
+            >mayankbiswas427@gmail.com</a
+          >
+        </div>
+        <div class="footer__links">
+          <!-- EDIT ME: your real social links -->
+          <a href="https://www.instagram.com/stillroaming.mynk/">Instagram</a>
+          <a href="https://github.com/explorerzeroone/">GitHub</a>
+          <a href="www.linkedin.com/in/mayank-biswas-02a64b350">LinkedIn</a>
+        </div>
+      </div>
+      <p class="footer__note">
+        Built by hand, and with love, one line at a time.
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
