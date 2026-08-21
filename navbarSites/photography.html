@@ -3,21 +3,264 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Photography site</title>
-    <link href="photography.css" rel="Stylesheet" />
+    <title>Mayank — Photography</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="photography.css" />
   </head>
   <body>
-    <main class="content">
-      <img src="../images/cards.jpg" width="350" />
-      <img src="../images/cat.jpg" width="350" />
-      <img src="../images/flower.jpg" width="350" />
-      <img src="../images/boat.jpg" width="350" />
-      <img src="../images/moving.jpg" width="350" />
-      <img src="../images/rajbariman.jpg" width="350" />
-      <img src="../images/sky.jpg" width="350" />
-      <img src="../images/time.jpg" width="350" />
-      <img src="../images/tower.jpg" width="350" />
-      <img src="../images/trapped.jpg" width="350" />
-    </main>
+    <!-- =====================================================
+       NAVIGATION BAR
+       ===================================================== -->
+    <header class="nav">
+      <div class="nav__inner">
+        <a href="#top" class="nav__brand">Stillroaming<span>.</span>mynk</a>
+
+        <!-- This is the small mobile menu button. Its behaviour lives in script.js -->
+        <button
+          class="nav__toggle"
+          id="navToggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="nav__links" id="navLinks">
+          <a href="../index.html">Home</a>
+          <a href="aboutme.html">About me</a>
+          <a href="projects.html">Projects</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- =====================================================
+       HERO — the first thing anyone sees
+       ===================================================== -->
+    <section class="hero" id="top">
+      <div class="hero__text">
+        <p class="eyebrow">Photography &amp; Frames</p>
+        <!-- EDIT ME: your headline -->
+        <h1 class="hero__title">I shoot what stops<br />me in my tracks.</h1>
+        <!-- EDIT ME: your subheading -->
+        <p class="hero__subtitle">
+          First-year CSE student, part-time explorer, full-time observer. Shot
+          on smartphone — mostly streets, skies, and things people walk past.
+        </p>
+        <a href="#work" class="button">See the work</a>
+      </div>
+
+      <!-- Hero photo — this is your single best shot -->
+      <figure class="hero__frame">
+        <!-- EDIT ME: replace "images/hero.jpg" with your own file -->
+        <img
+          src="../images/bird.jpg"
+          alt="Describe this photo in a few words"
+          class="frame__image"
+          data-placeholder-label="Add hero.jpg to the images folder"
+        />
+        <figcaption class="frame__caption">
+          <span>f/2.8</span><span>1/500s</span><span>ISO 200</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- =====================================================
+       GALLERY — this is the part you'll edit the most
+       Each "frame" below is one photo. Copy a whole <figure>
+       block to add a new photo, and delete one to remove a photo.
+       ===================================================== -->
+    <section class="gallery" id="work">
+      <div class="section__heading">
+        <p class="eyebrow">Selected Work</p>
+        <h2>The contact sheet</h2>
+      </div>
+
+      <div class="gallery__grid" id="galleryGrid">
+        <!-- ============ PHOTO 1 — duplicate this block for every new photo ============ -->
+        <figure class="frame" data-frame="01">
+          <button class="frame__button" data-full="images/photo-01.jpg">
+            <!-- EDIT ME: swap the image file -->
+            <img
+              src="../images/rajbariman.jpg"
+              alt="Maybe of a time passed"
+              class="frame__image"
+            />
+            <span class="frame__index">No. 01</span>
+          </button>
+          <figcaption>
+            <!-- EDIT ME: title and description -->
+            <h3>Contemplation</h3>
+            <p>What is he thinking about?</p>
+          </figcaption>
+        </figure>
+
+        <!-- ============ PHOTO 2 ============ -->
+        <figure class="frame" data-frame="02">
+          <button class="frame__button" data-full="images/photo-02.jpg">
+            <img
+              src="../images/sky.jpg"
+              alt="Short description of the photo"
+              class="frame__image"
+            />
+            <span class="frame__index">No. 02</span>
+          </button>
+          <figcaption>
+            <h3>Monsoon Break</h3>
+            <p>
+              Sky splitting open over the river, thirty seconds before the rain
+              hit.
+            </p>
+          </figcaption>
+        </figure>
+
+        <!-- ============ PHOTO 3 ============ -->
+        <figure class="frame" data-frame="03">
+          <button class="frame__button" data-full="images/photo-03.jpg">
+            <img
+              src="../images/chess.jpg"
+              alt="Short description of the photo"
+              class="frame__image"
+            />
+            <span class="frame__index">No. 03</span>
+          </button>
+          <figcaption>
+            <h3>A moment of quiet</h3>
+            <p>Two men playing a game of quiet in a not so quiet environment</p>
+          </figcaption>
+        </figure>
+
+        <!-- ============ PHOTO 4 ============ -->
+        <figure class="frame" data-frame="04">
+          <button class="frame__button" data-full="images/photo-04.jpg">
+            <img
+              src="../images/cat.jpg"
+              alt="Short description of the photo"
+              class="frame__image"
+            />
+            <span class="frame__index">No. 04</span>
+          </button>
+          <figcaption>
+            <h3>A cat</h3>
+            <p>Isn't he cute?</p>
+          </figcaption>
+        </figure>
+
+        <!-- ============ PHOTO 5 ============ -->
+        <figure class="frame" data-frame="05">
+          <button class="frame__button" data-full="images/photo-05.jpg">
+            <img
+              src="../images/trapped.jpg"
+              alt="Short description of the photo"
+              class="frame__image"
+            />
+            <span class="frame__index">No. 05</span>
+          </button>
+          <figcaption>
+            <h3>Handloom</h3>
+            <p>A man handlooming against a tight deadline.</p>
+          </figcaption>
+        </figure>
+
+        <!-- ============ PHOTO 6 ============ -->
+        <figure class="frame" data-frame="06">
+          <button class="frame__button" data-full="images/photo-06.jpg">
+            <img
+              src="../images/boat.jpg"
+              alt="Short description of the photo"
+              class="frame__image"
+            />
+            <span class="frame__index">No. 06</span>
+          </button>
+          <figcaption>
+            <h3>A fisherman</h3>
+            <p>Retreating back to shore after a good catch</p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- =====================================================
+       ABOUT — a short, human paragraph about you
+       ===================================================== -->
+    <section class="about" id="about">
+      <div class="about__grid">
+        <div class="about__text">
+          <p class="eyebrow">How it started</p>
+          <!-- EDIT ME: write this in your own voice, 3–5 sentences is plenty -->
+          <p class="about__lead">
+            It started when I was in 8th grade. I started to notice moments by
+            slowing down and wanted to capture those very moments. I eventually
+            ended up just as interested in what a scene looks like as in how it
+            works. Photography started as a way to slow down and pay attention
+            and eventually turned into a way of telling a story and a show of
+            how I think.
+          </p>
+          <br />
+          <p>
+            When I'm not behind a camera, I'm usually building something — may
+            it be food, code, or even problems, whatever teaches me something
+            new — or planning the next place I want to explore, ideally on two
+            wheels. I capture photos and videos because I like to, and wish to
+            become a creator someday.
+          </p>
+        </div>
+
+        <!-- Camera gear, shown like EXIF data. Edit freely. -->
+        <dl class="about__gear">
+          <div>
+            <dt>Camera</dt>
+            <dd>Shot on Smartphone, Moto G84</dd>
+          </div>
+          <div>
+            <dt>Shoots</dt>
+            <dd>Streets, skies, moments and stories</dd>
+          </div>
+          <div>
+            <dt>Based in</dt>
+            <dd>West Bengal, India</dd>
+          </div>
+          <div>
+            <dt>Status</dt>
+            <dd>Always exploring</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- =====================================================
+       LIGHTBOX — the pop-up viewer for full-size photos.
+       You don't need to touch this, script.js fills it in
+       automatically when someone clicks a photo.
+       ===================================================== -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button
+        class="lightbox__close"
+        id="lightboxClose"
+        aria-label="Close photo"
+      >
+        ×
+      </button>
+      <button
+        class="lightbox__prev"
+        id="lightboxPrev"
+        aria-label="Previous photo"
+      >
+        ‹
+      </button>
+      <img src="" alt="" class="lightbox__image" id="lightboxImage" />
+      <button class="lightbox__next" id="lightboxNext" aria-label="Next photo">
+        ›
+      </button>
+    </div>
+
+    <!-- The JavaScript file. Always load it at the very end of the body. -->
+    <script src="photography.js"></script>
   </body>
 </html>

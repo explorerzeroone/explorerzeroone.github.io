@@ -1,30 +1,494 @@
-img {
-  align-items: center center center;
+/* =========================================================
+   STYLE.CSS — every color, font and spacing choice lives here.
+   The file is split into clearly labelled sections. Use
+   Ctrl+F (or Cmd+F) and search for the ALL CAPS section title
+   you want to jump to, e.g. search "GALLERY" to find that part.
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1. VARIABLES — change a value here and it updates
+      EVERYWHERE that color/font is used on the site.
+      This is the easiest way to re-theme the whole page.
+   --------------------------------------------------------- */
+:root {
+  /* Colors — brown, beige, black & white palette */
+  --color-ink: #1c1712; /* near-black, used for text */
+  --color-espresso: #40312a; /* deep brown, used for buttons/nav */
+  --color-clay: #a35d35; /* warm brown accent, used for highlights */
+  --color-sand: #e7d9c3; /* beige, used for cards/borders */
+  --color-paper: #f6f1e7; /* warm off-white, main background */
+  --color-white: #fffdf8; /* pure-ish white, used for cards */
+
+  /* Fonts — one for headlines, one for body text, one for labels */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+  /* Reusable spacing so sections feel consistent */
+  --space-section: clamp(4rem, 8vw, 8rem);
+  --max-width: 1200px;
+}
+
+/* ---------------------------------------------------------
+   2. RESET — removes each browser's default spacing/quirks
+      so the site looks the same everywhere. You don't need
+      to edit this section.
+   --------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
 }
 body {
-  background-color: rgb(255, 247, 201);
+  font-family: var(--font-body);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
-.content {
-  padding: 50px;
+img {
+  max-width: 100%;
+  display: block;
 }
-.navbar {
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ---------------------------------------------------------
+   3. SHARED / REUSABLE STYLES
+      Small pieces used in more than one section.
+   --------------------------------------------------------- */
+
+/* The small uppercase tag above most headlines, e.g. "Photography & Frames" */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-clay);
+  margin-bottom: 0.75rem;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--color-ink);
+}
+
+/* A generic call-to-action button, used for "See the work" etc. */
+.button {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.9rem 1.8rem;
+  background: var(--color-espresso);
+  color: var(--color-white);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  border-radius: 2px;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+.button:hover {
+  background: var(--color-clay);
+  transform: translateY(-2px);
+}
+
+/* A photo that hasn't been added yet shows a soft placeholder
+   instead of a broken image icon. script.js adds the class
+   "frame__image--missing" automatically when a photo fails to load. */
+.frame__image--missing {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--color-sand),
+    var(--color-sand) 10px,
+    var(--color-white) 10px,
+    var(--color-white) 20px
+  );
+  aspect-ratio: 4 / 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-espresso);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* ---------------------------------------------------------
+   4. NAVIGATION BAR
+   --------------------------------------------------------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(246, 241, 231, 0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-sand);
+}
+.nav__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav__brand {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.nav__links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.nav__links a {
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.nav__links a:hover {
+  opacity: 1;
+  color: var(--color-clay);
+}
+.nav__cross-link {
+  color: var(--color-clay);
+}
+
+/* Mobile hamburger button — hidden on desktop, shown on small screens below */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 26px;
+}
+.nav__toggle span {
+  height: 2px;
+  background: var(--color-ink);
+  border-radius: 2px;
+}
+
+/* ---------------------------------------------------------
+   5. HERO SECTION
+   --------------------------------------------------------- */
+.hero {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-section) 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.hero__title {
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  margin-bottom: 1.25rem;
+}
+.hero__subtitle {
+  max-width: 40ch;
+  color: var(--color-espresso);
+  font-size: 1.05rem;
+}
+
+/* The hero photo, styled like a film frame with little "sprocket holes"
+   down the left edge — a nod to actual 35mm film. This is the one bold,
+   decorative flourish on the page; everything else stays quiet. */
+.hero__frame {
+  position: relative;
+  padding-left: 28px;
+  background:
+    radial-gradient(circle, var(--color-paper) 3px, transparent 3px) repeat-y
+      left / 100% 22px,
+    var(--color-espresso);
+  border-radius: 2px;
+}
+.hero__frame .frame__image {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+.frame__caption {
+  display: flex;
+  gap: 1.2rem;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--color-sand);
+}
+
+/* ---------------------------------------------------------
+   6. GALLERY SECTION
+   --------------------------------------------------------- */
+.gallery {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-section) 2rem;
+}
+.section__heading {
+  margin-bottom: 3rem;
+}
+.section__heading h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem 2rem;
+}
+
+.frame {
+  display: flex;
+  flex-direction: column;
+}
+
+.frame__button {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--color-sand);
+}
+.frame__button .frame__image {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.frame__button:hover .frame__image {
+  transform: scale(1.04);
+}
+
+/* The small "No. 01" tag in the corner of each photo, like a contact-sheet frame number */
+.frame__index {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  background: rgba(28, 23, 18, 0.75);
+  color: var(--color-white);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  border-radius: 2px;
+}
+
+.frame figcaption {
+  margin-top: 0.9rem;
+}
+.frame figcaption h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
+}
+.frame figcaption p {
+  color: var(--color-espresso);
+  font-size: 0.9rem;
+}
+
+/* ---------------------------------------------------------
+   7. ABOUT SECTION
+   --------------------------------------------------------- */
+.about {
+  background: var(--color-espresso);
+  color: var(--color-paper);
+  padding: var(--space-section) 2rem;
+}
+.about__grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 4rem;
+}
+.about .eyebrow {
+  color: var(--color-sand);
+}
+.about__lead {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+.about__text p:not(.about__lead) {
+  color: var(--color-sand);
+  max-width: 55ch;
+}
+
+/* Camera gear list, styled like an EXIF/metadata panel */
+.about__gear {
+  align-self: start;
+  border-top: 1px solid rgba(246, 241, 231, 0.25);
+}
+.about__gear > div {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background-color: chocolate;
-  color: black;
-  padding: 25px;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid rgba(246, 241, 231, 0.25);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
 }
-.nav-links {
-  list-style: none;
+.about__gear dt {
+  color: var(--color-sand);
+  opacity: 0.7;
+}
+.about__gear dd {
+  text-align: right;
+}
+
+/* ---------------------------------------------------------
+   8. FOOTER
+   --------------------------------------------------------- */
+.footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-section) 2rem 3rem;
+}
+.footer__inner {
   display: flex;
-  gap: 25px;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--color-sand);
 }
-.nav-links a {
-  color: white;
-  text-decoration: none;
+.footer__email {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--color-clay);
 }
-.nav-links a:hover {
-  color: beige;
-  text-decoration: none;
+.footer__links {
+  display: flex;
+  gap: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.footer__note {
+  margin-top: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-espresso);
+  opacity: 0.6;
+}
+
+/* ---------------------------------------------------------
+   9. LIGHTBOX — full-screen photo viewer.
+      Hidden by default; script.js toggles the "is-open" class.
+   --------------------------------------------------------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 23, 18, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 100;
+}
+.lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox__image {
+  max-width: 85vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 2px;
+}
+.lightbox__close,
+.lightbox__prev,
+.lightbox__next {
+  position: absolute;
+  color: var(--color-white);
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  opacity: 0.8;
+}
+.lightbox__close:hover,
+.lightbox__prev:hover,
+.lightbox__next:hover {
+  opacity: 1;
+}
+.lightbox__close {
+  top: 1.5rem;
+  right: 1.5rem;
+}
+.lightbox__prev {
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.lightbox__next {
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ---------------------------------------------------------
+   10. RESPONSIVE — rules for tablets and phones.
+       Anything inside these blocks only applies below
+       the given screen width.
+   --------------------------------------------------------- */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .about__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav__toggle {
+    display: flex;
+  }
+  .nav__links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-paper);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--color-sand);
+    display: none;
+  }
+  .nav__links.is-open {
+    display: flex;
+  }
+  .gallery__grid {
+    grid-template-columns: 1fr;
+  }
+  .footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

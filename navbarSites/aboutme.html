@@ -3,33 +3,223 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link href="aboutme.css" rel="Stylesheet" />
+    <title>Mayank — About</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="aboutme.css" />
   </head>
   <body>
-    <main class="content">
-      <h1>Hi, I'm Mayank.</h1>
-      <p>
-        I'm a student, aspiring engineer, photographer, musician, and lifelong
-        explorer. I enjoy learning new things, whether that's programming,
-        photography, music, or understanding how the world works. Technology and
-        creativity are two things that constantly draw me in. I'm currently
-        learning web development and programming, building projects like this
-        website to document my journey and improve my skills over time. I
-        believe the best way to learn is by creating, experimenting, making
-        mistakes, and improving with every iteration. Outside of coding, I have
-        a deep interest in photography. I enjoy capturing moments, landscapes,
-        people, and everyday scenes that tell a story. Through my camera, I try
-        to see the world from different perspectives and preserve moments that
-        might otherwise go unnoticed. I'm also passionate about music,
-        motorcycles, travel, books, and adventure. One of my biggest dreams is
-        to explore the world on two wheels, experience different cultures, meet
-        new people, and discover places far beyond the usual tourist routes.
-        This website is both a personal space and a record of my growth. As I
-        learn new skills and take on new challenges, I'll continue updating it
-        with my projects, photography, experiences, and ideas. Thanks for
-        stopping by.
+    <!-- =====================================================
+       NAVIGATION — links back to your two other pages,
+       plus quick jumps to the sections on this page.
+       ===================================================== -->
+    <header class="nav">
+      <div class="nav__inner">
+        <a href="#top" class="nav__brand">Stillroaming<span>.</span>mynk</a>
+
+        <button
+          class="nav__toggle"
+          id="navToggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="nav__links" id="navLinks">
+          <a href="../index.html">Home</a>
+          <a href="photography.html">Photography</a>
+          <a href="projects.html">Projects</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- =====================================================
+       HERO — the motto, given room to breathe.
+       This is the one bold, cinematic moment on the page;
+       everything after it stays calm and quiet on purpose.
+       ===================================================== -->
+    <section class="hero" id="top">
+      <p class="eyebrow">About</p>
+      <!-- EDIT ME: your motto -->
+      <blockquote class="hero__motto">
+        "Life isn't something to watch from the sidelines. It's something to
+        explore, understand, and create."
+      </blockquote>
+      <!-- EDIT ME: your one-sentence summary -->
+      <p class="hero__summary">
+        A curious engineer, creative storyteller, and lifelong explorer — driven
+        by freedom, learning, and the pursuit of meaningful experiences.
       </p>
-    </main>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- =====================================================
+       WHO I AM — the main narrative paragraph
+       ===================================================== -->
+    <section class="intro reveal">
+      <!-- EDIT ME: this whole paragraph is meant to be rewritten in your own words over time -->
+      <p>
+        I'm an engineering student, but I don't define myself by my degree. I'm
+        someone who stays endlessly curious about how the world works — physics,
+        computers, photography, music, philosophy, machines, people. I'd rather
+        understand something from first principles than take it on faith.
+      </p>
+      <p>
+        I don't like living on autopilot. I care more about freedom, exploration
+        and genuine experience than I do about status or prestige. I'm
+        analytical by nature, but just as much a creative one — I don't think
+        logic and art are opposites. I think they explain each other.
+      </p>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- =====================================================
+       VALUES — a plain list, no numbering, because these
+       aren't steps in a sequence — they're things held
+       at the same time, side by side.
+       ===================================================== -->
+    <section class="values reveal" id="values">
+      <p class="eyebrow">What I hold onto</p>
+      <ul class="values__list">
+        <!-- EDIT ME: add, remove or reorder freely -->
+        <li>Freedom over comfort</li>
+        <li>Curiosity over certainty</li>
+        <li>Growth over perfection</li>
+        <li>Authenticity over appearance</li>
+        <li>Meaning over popularity</li>
+        <li>Experiences over possessions</li>
+        <li>Independence, without letting go of the people who matter</li>
+      </ul>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- =====================================================
+       INTERESTS — one card per thing you care about.
+       Copy a whole <article> block to add a new interest.
+       ===================================================== -->
+    <section class="interests reveal" id="interests">
+      <p class="eyebrow">What fills my time</p>
+
+      <div class="interests__grid">
+        <!-- ============ INTEREST 1 ============ -->
+        <article class="interest">
+          <h3>Engineering &amp; Technology</h3>
+          <p>
+            I like learning how things work from first principles — computers,
+            physics, and the harder engineering problems in between. Right now
+            that means AI, robotics, space technology and automotive
+            engineering.
+          </p>
+        </article>
+
+        <!-- ============ INTEREST 2 ============ -->
+        <article class="interest">
+          <h3>Photography</h3>
+          <p>
+            My favourite creative outlet. Landscapes, travel, portraits —
+            storytelling through images. I'd rather catch a genuine moment in
+            natural light than stage a perfect one.
+          </p>
+        </article>
+
+        <!-- ============ INTEREST 3 ============ -->
+        <article class="interest">
+          <h3>Music</h3>
+          <p>
+            Self-taught guitarist, mostly acoustic and rock. Slowly starting to
+            write my own songs — usually about freedom, hope and figuring myself
+            out.
+          </p>
+        </article>
+
+        <!-- ============ INTEREST 4 ============ -->
+        <article class="interest">
+          <h3>Books</h3>
+          <p>
+            I gravitate toward the philosophical and psychological — books that
+            make me see the world differently, not just ones that pass the time.
+          </p>
+        </article>
+
+        <!-- ============ INTEREST 5 ============ -->
+        <article class="interest">
+          <h3>Travel</h3>
+          <p>
+            Not about luxury. I dream of riding a motorcycle across remote
+            mountains, forests and unfamiliar countries — meeting people, seeing
+            how they live, coming back different.
+          </p>
+        </article>
+
+        <!-- Need another card? Copy any <article class="interest"> block above. -->
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- =====================================================
+       TRAITS — a quiet tag list, not a bragging list.
+       ===================================================== -->
+    <section class="traits reveal">
+      <p class="eyebrow">How people would describe me</p>
+      <ul class="traits__list">
+        <!-- EDIT ME: keep this honest, not aspirational -->
+        <li>Curious</li>
+        <li>Calm under pressure</li>
+        <li>Independent thinker</li>
+        <li>Reflective</li>
+        <li>Patient</li>
+        <li>Creative</li>
+        <li>Analytical</li>
+        <li>Adaptable</li>
+        <li>Honest</li>
+        <li>Open-minded</li>
+      </ul>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- =====================================================
+       WHERE THIS IS GOING — motivation + long-term vision
+       ===================================================== -->
+    <section class="vision reveal">
+      <div class="vision__grid">
+        <div>
+          <p class="eyebrow">What moves me</p>
+          <p class="vision__lead">
+            I want to become someone capable of building meaningful things —
+            software, music, photographs, engineering projects. Work that
+            creates real value while still letting me live freely.
+          </p>
+          <p>
+            Success, to me, isn't a title. It's having enough independence to
+            choose what I work on, and where I wake up tomorrow.
+          </p>
+        </div>
+        <div>
+          <p class="eyebrow">Somewhere down the road</p>
+          <ul class="vision__list">
+            <li>Build useful technology</li>
+            <li>Keep learning, indefinitely</li>
+            <li>Travel extensively, mostly by motorcycle</li>
+            <li>Make music</li>
+            <li>Document the journey through photographs</li>
+            <li>Meet people who see the world differently than I do</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <script src="aboutme.js"></script>
   </body>
 </html>

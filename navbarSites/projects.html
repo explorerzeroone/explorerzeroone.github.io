@@ -3,10 +3,252 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projects</title>
-    <link href="projects.css" rel="Stylesheet" />
+    <title>Mayank — Projects</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="projects.css" />
   </head>
   <body>
-    <a href="../Projects/index.html" class="button">Number Guessing Game</a>
+    <!-- =====================================================
+       NAVIGATION BAR
+       ===================================================== -->
+    <header class="nav">
+      <div class="nav__inner">
+        <a href="#top" class="nav__brand">Stillroaming<span>.</span>mynk</a>
+
+        <button
+          class="nav__toggle"
+          id="navToggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="nav__links" id="navLinks">
+          <a href="../index.html">Home</a>
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <!-- EDIT ME: these paths assume all three site folders sit side by side -->
+          <a href="../navbarSites/aboutme.html" class="nav__cross-link"
+            >About Me ↗</a
+          >
+          <a href="../navbarSites/photography.html" class="nav__cross-link"
+            >Photography ↗</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- =====================================================
+       HERO
+       ===================================================== -->
+    <section class="hero" id="top">
+      <p class="eyebrow">// building things</p>
+      <!-- EDIT ME: your headline -->
+      <h1 class="hero__title">
+        I'm Mayank. I build,<br />break, and figure it out.
+      </h1>
+      <!-- EDIT ME: your subheading -->
+      <p class="hero__subtitle">
+        First-year CSE student at HIT Haldia. Interested in AI, robotics,
+        embedded systems and anything that moves — cars, bicycles, ideas. This
+        page is the running log of what I've built so far.
+      </p>
+
+      <!-- Interest tags — these are just labels, edit the list freely -->
+      <ul class="tag-list">
+        <li>AI / ML</li>
+        <li>Robotics</li>
+        <li>Automotive</li>
+        <li>Space</li>
+        <li>Cinema</li>
+        <li>Cycling</li>
+      </ul>
+    </section>
+
+    <!-- =====================================================
+       PROJECTS — the main event. Each project is one
+       "log entry" card. Copy a whole <article> block to
+       add a new project.
+       ===================================================== -->
+    <section class="projects" id="projects">
+      <div class="section__heading">
+        <p class="eyebrow">// projects</p>
+        <h2>Build log</h2>
+      </div>
+
+      <div class="projects__list" id="projectsList">
+        <!-- ============ PROJECT — your one finished project so far ============
+           This block is the pattern to copy for every future project:
+           an image on the left, details on the right.
+      -->
+        <article class="project">
+          <!-- Preview image. EDIT ME: put a screenshot in the images folder
+             (e.g. images/project-01.jpg) and point src at it below. -->
+          <a class="project__preview" href="#">
+            <img
+              src="/images/guessing.png"
+              alt="Preview of the Number Guessing Game"
+              class="project__image"
+            />
+          </a>
+
+          <div class="project__body">
+            <div class="project__meta">
+              <span class="project__status project__status--done"
+                >Completed</span
+              >
+              <span class="project__year">2026</span>
+            </div>
+            <h3 class="project__name">Number Guessing Game</h3>
+            <p class="project__description">
+              A browser-based guessing game built while following Jonas
+              Schmedtmann's JavaScript course. Guess a random number between 1
+              and 20, track your score as it drops with each wrong guess, and
+              try to beat your high score.
+            </p>
+            <ul class="project__stack">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+            </ul>
+            <div class="project__links">
+              <!-- EDIT ME: link to the live page and the actual project file/repo -->
+              <a href="../Projects/Guessing/index.html">Play it ↗</a>
+              <a
+                href="https://github.com/explorerzeroone/explorerzeroone.github.io/tree/main/Projects"
+                >Project file ↗</a
+              >
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ TEMPLATE — copy this whole block for your next project ============
+           HOW TO ADD A NEW PROJECT:
+             1. Select everything from <article class="project project--template">
+                down to the matching </article> below, and copy it.
+             2. Paste the copy anywhere inside .projects__list — above this
+                comment puts newest projects at the top.
+             3. Take a screenshot of your project and save it in the images
+                folder, e.g. images/project-02.jpg
+             4. Change the img src below to match that file name.
+             5. Fill in the status word, year, name, description, tech tags
+                and the two links.
+             6. Delete the words "project--template" from the class="..."
+                on the <article> tag — that class is only what dims this
+                one so it reads as an example, not a real project.
+           Status options already styled for you: project__status--done,
+           project__status--active, project__status--live
+      -->
+        <article class="project project--template">
+          <a class="project__preview" href="#">
+            <img
+              src="images/project-02.jpg"
+              alt="Preview of your next project"
+              class="project__image"
+            />
+          </a>
+          <div class="project__body">
+            <div class="project__meta">
+              <span class="project__status project__status--active"
+                >Status</span
+              >
+              <span class="project__year">Year</span>
+            </div>
+            <h3 class="project__name">Next project name</h3>
+            <p class="project__description">
+              One or two sentences on what this project does and why you built
+              it.
+            </p>
+            <ul class="project__stack">
+              <li>Tech</li>
+              <li>Stack</li>
+            </ul>
+            <div class="project__links">
+              <a href="#">Live ↗</a>
+              <a href="#">Project file ↗</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =====================================================
+       ABOUT
+       ===================================================== -->
+    <section class="about" id="about">
+      <div class="about__grid">
+        <div class="about__text">
+          <p class="eyebrow">// about</p>
+          <!-- EDIT ME: write this in your own words -->
+          <p class="about__lead">
+            I like understanding how things work well enough to rebuild them —
+            whether that's an application, an engine, or a photograph.
+          </p>
+          <p>
+            I'm a first-year CSE student at HIT Haldia, still early in learning
+            to code properly, which is exactly why I'm building this site by
+            hand instead of using a template — it's practice. Outside of that:
+            photography, exploring, and following anything to do with space and
+            automotive engineering.
+          </p>
+        </div>
+
+        <!-- Quick facts panel, styled like a status readout -->
+        <dl class="about__facts">
+          <div>
+            <dt>Studying</dt>
+            <dd>B.Tech CSE, HIT Haldia</dd>
+          </div>
+          <div>
+            <dt>Learning</dt>
+            <dd>Web development, AI/ML</dd>
+          </div>
+          <div>
+            <dt>Currently into</dt>
+            <dd>Local LLMs &amp; voice assistants</dd>
+          </div>
+          <div>
+            <dt>Also shoots</dt>
+            <dd>Photography, videos</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- =====================================================
+       FOOTER / CONTACT
+       ===================================================== -->
+    <footer class="footer" id="contact">
+      <div class="footer__inner">
+        <div>
+          <p class="eyebrow">// contact</p>
+          <!-- EDIT ME: your real email -->
+          <a href="mayankbiswas427@gmail.com" class="footer__email"
+            >mayankbiswas427@gmail.com</a
+          >
+        </div>
+        <div class="footer__links">
+          <!-- EDIT ME: your real links -->
+          <a href="https://github.com/explorerzeroone/">GitHub</a>
+          <a href="www.linkedin.com/in/mayank-biswas-02a64b350">LinkedIn</a>
+          <a href="../navbarSites/aboutme.html">About me ↗</a>
+          <a href="../navbarSites/photography.html">Photography site ↗</a>
+        </div>
+      </div>
+      <p class="footer__note">
+        Built by hand, and with love, one line at a time.
+      </p>
+    </footer>
+
+    <script src="projects.js"></script>
   </body>
 </html>

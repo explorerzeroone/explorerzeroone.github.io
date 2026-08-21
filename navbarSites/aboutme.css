@@ -1,37 +1,420 @@
+/* =========================================================
+   STYLE.CSS — every color, font and spacing choice lives here.
+   Sections are labelled in ALL CAPS — search (Ctrl/Cmd+F) for
+   the section name to jump straight there.
+
+   NOTE: this page is DARK on purpose (see the note in index.html).
+   It reuses the same brown/beige family and the same three fonts
+   as your other two sites, just arranged for a night-sky feeling
+   instead of a warm-paper one.
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1. VARIABLES
+   --------------------------------------------------------- */
+:root {
+  --color-bg: #14100c; /* near-black background, warm not blue */
+  --color-surface: #1f1912; /* slightly lighter panels/dividers */
+  --color-espresso: #40312a; /* deep brown, used for borders */
+  --color-clay: #c9855a; /* brighter clay so it still pops on dark */
+  --color-sand: #e7d9c3; /* beige, used for body text */
+  --color-white: #fffdf8; /* headline text */
+  --color-muted: #9c8f7c; /* dim secondary text */
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+  --space-section: clamp(3.5rem, 7vw, 6.5rem);
+  --max-width: 900px; /* narrower than the other sites — this page is meant to be read, not browsed */
+}
+
+/* ---------------------------------------------------------
+   2. RESET — you don't need to edit this section.
+   --------------------------------------------------------- */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  background-image: url("images/me.jpg");
 }
-img {
-  padding: 30px;
-  align-items: center center center;
-}
-.content {
-  padding: 50px;
+html {
+  scroll-behavior: smooth;
 }
 body {
-  background-color: rgb(255, 247, 201);
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-sand);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
 }
-.navbar {
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+ul {
+  list-style: none;
+}
+
+/* ---------------------------------------------------------
+   3. SHARED STYLES
+   --------------------------------------------------------- */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-clay);
+  margin-bottom: 1rem;
+}
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-white);
+}
+
+/* A thin horizon-like line used between sections — a quiet nod to
+   roads, night skies and long distances, without being literal about it. */
+.divider {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-espresso),
+    transparent
+  );
+}
+
+/* Sections start slightly faded and settle into place as you scroll to
+   them — script.js adds the "is-visible" class when a section enters
+   the screen. If JavaScript is off, the "reveal" rule below still shows
+   everything normally, so nothing is ever hidden from anyone. */
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+.reveal.js-ready {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------------------------------------------------------
+   4. NAVIGATION
+   --------------------------------------------------------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(20, 16, 12, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-surface);
+}
+.nav__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav__brand {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--color-white);
+}
+.nav__links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.nav__links a {
+  opacity: 0.75;
+  transition: opacity 0.2s;
+  color: var(--color-sand);
+}
+.nav__links a:hover {
+  opacity: 1;
+  color: var(--color-clay);
+}
+.nav__cross-link {
+  color: var(--color-clay) !important;
+}
+
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 26px;
+}
+.nav__toggle span {
+  height: 2px;
+  background: var(--color-sand);
+  border-radius: 2px;
+}
+
+/* ---------------------------------------------------------
+   5. HERO — the motto gets the most space on the page.
+   --------------------------------------------------------- */
+.hero {
+  background-image: url(/images/me.jpg);
+  background-position: center;
+  margin: 0 auto;
+  padding: var(--space-section) 2rem;
+  text-align: center;
+}
+.hero__motto {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  color: var(--color-white);
+  line-height: 1.35;
+  font-style: normal;
+  margin-bottom: 1.5rem;
+}
+.hero__summary {
+  max-width: 46ch;
+  margin: 0 auto;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+}
+
+/* ---------------------------------------------------------
+   6. INTRO ("Who I am" paragraph)
+   --------------------------------------------------------- */
+.intro {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-section) 2rem;
+  display: grid;
+  gap: 1.5rem;
+  font-size: 1.1rem;
+}
+.intro p {
+  max-width: 65ch;
+}
+
+/* ---------------------------------------------------------
+   7. VALUES
+   --------------------------------------------------------- */
+.values {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-section) 2rem;
+}
+.values__list {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 0.5rem;
+}
+.values__list li {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--color-white);
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--color-surface);
+}
+
+/* ---------------------------------------------------------
+   8. INTERESTS
+   --------------------------------------------------------- */
+.interests {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--space-section) 2rem;
+}
+.interests__grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.interest {
+  padding: 1.75rem;
+  background: var(--color-surface);
+  border-radius: 3px;
+  border: 1px solid rgba(64, 49, 42, 0.6);
+}
+.interest h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+}
+.interest p {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+/* ---------------------------------------------------------
+   9. TRAITS
+   --------------------------------------------------------- */
+.traits {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-section) 2rem;
+}
+.traits__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+.traits__list li {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--color-espresso);
+  border-radius: 2px;
+  color: var(--color-sand);
+}
+
+/* ---------------------------------------------------------
+   10. VISION ("What moves me" + long-term list)
+   --------------------------------------------------------- */
+.vision {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--space-section) 2rem;
+}
+.vision__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+}
+.vision__lead {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--color-white);
+  line-height: 1.5;
+  margin-bottom: 1.1rem;
+}
+.vision p:not(.vision__lead) {
+  color: var(--color-muted);
+  max-width: 50ch;
+}
+.vision__list {
+  display: grid;
+  gap: 0.7rem;
+}
+.vision__list li {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--color-sand);
+  padding-left: 1.2rem;
+  position: relative;
+}
+/* A small dash instead of a bullet dot — quieter, fits the mono font */
+.vision__list li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: var(--color-clay);
+}
+
+/* ---------------------------------------------------------
+   11. FOOTER
+   --------------------------------------------------------- */
+.footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-section) 2rem 3rem;
+}
+.footer__inner {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background-color: chocolate;
-  color: black;
-  padding: 25px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--color-surface);
 }
-.nav-links {
-  list-style: none;
+.footer__email {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--color-clay);
+}
+.footer__links {
   display: flex;
-  gap: 25px;
+  gap: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-sand);
 }
-.nav-links a {
-  color: white;
-  text-decoration: none;
+.footer__note {
+  margin-top: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-muted);
 }
-.nav-links a:hover {
-  color: beige;
-  text-decoration: none;
+
+/* ---------------------------------------------------------
+   12. RESPONSIVE
+   --------------------------------------------------------- */
+@media (max-width: 900px) {
+  .interests__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .vision__grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav__toggle {
+    display: flex;
+  }
+  .nav__links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-bg);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--color-surface);
+    display: none;
+  }
+  .nav__links.is-open {
+    display: flex;
+  }
+  .interests__grid {
+    grid-template-columns: 1fr;
+  }
+  .footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Respect people who've asked their system to reduce motion —
+   they get the fade-up effect turned off entirely. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal.js-ready {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
